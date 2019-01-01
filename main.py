@@ -3,7 +3,6 @@ import os
 import argparse
 from urllib.parse import urlparse
 from dotenv import load_dotenv
-load_dotenv()
 
 key = os.getenv("TOKEN")
 
@@ -31,6 +30,8 @@ def get_clicks(key, short_url):
   return response.json()['link_clicks']
 
 if __name__ == "__main__":
+  load_dotenv()
+  
   parser = argparse.ArgumentParser(description='Доступны следующие функции. Елси введена обычная ссылка, то скрипт выдает сокращенную ссылку. Если введена сокращенная ссылка, то скрипт выдает количество кликов по ссылке')
   parser.add_argument('link', help='Введенная ссылка')
   args = parser.parse_args()

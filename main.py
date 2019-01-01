@@ -4,10 +4,6 @@ import argparse
 from urllib.parse import urlparse
 from dotenv import load_dotenv
 
-key = os.getenv("TOKEN")
-
-
-
 def create_short_link(key, long_url):
   url = 'https://api-ssl.bitly.com/v4/bitlinks'
   headers = {'Authorization': 'Bearer {}'.format(key)}
@@ -30,7 +26,8 @@ def get_clicks(key, short_url):
   return response.json()['link_clicks']
 
 if __name__ == "__main__":
-  load_dotenv()
+  load_dotenv() 
+  key = os.getenv("TOKEN")
   
   parser = argparse.ArgumentParser(description='Доступны следующие функции. Елси введена обычная ссылка, то скрипт выдает сокращенную ссылку. Если введена сокращенная ссылка, то скрипт выдает количество кликов по ссылке')
   parser.add_argument('link', help='Введенная ссылка')
